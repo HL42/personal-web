@@ -1,5 +1,8 @@
 // 常量定义文件，存储所有静态数据
 import type { Project, Experience, SocialLink } from './types';
+import inventoryImage from './assets/inventory.jpg';
+import webBlogImage from './assets/web-blog.jpg';
+import waterlooEatImage from './assets/waterlooEat.jpg';
 
 // 首页英雄区文字
 export const HERO_TEXT = {
@@ -17,7 +20,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     description: "A full-stack inventory management dashboard supporting comprehensive CRUD operations. Features bulk data import/export via SheetJS and a responsive admin interface with Material UI DataGrid.",
     techStack: ["React", "Node.js", "MongoDB", "Material UI"],
-    imageUrl: "./src/assets/inventory.jpg",
+    imageUrl: inventoryImage,
     link: "https://inventory-system-liart-iota.vercel.app/",
     githubLink: "https://github.com/HL42/inventory-system",
     period: "Nov 2025",
@@ -30,7 +33,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     description: "A multi-user blogging platform with secure RESTful API endpoints. Implements real-time news integration via GNewsAPI and persistent bookmarking functionality.",
     techStack: ["React", "Express.js", "MongoDB Atlas", "GNewsAPI"],
-    imageUrl: "./src/assets/web-blog.jpg",
+    imageUrl: webBlogImage,
     link: "https://blog-app-92jy.vercel.app/",
     githubLink: "https://github.com/HL42/BlogApp",
     period: "Jan 2025 – Mar 2025",
@@ -43,7 +46,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     description: "A modern, bilingual food discovery platform designed specifically for the Waterloo community, similar to Dianping in China. Discover the best restaurants, share your dining experiences, and explore hidden culinary treasures in Waterloo.",
     techStack: ["JavaScript", "HTML", "CSS"],
-    imageUrl: "./src/assets/waterlooEat.jpg",
+    imageUrl: waterlooEatImage,
     link: "https://hl42.github.io/WaterlooEat-App/",
     githubLink: "https://github.com/HL42/WaterlooEat-App",
     period: "Sep 2025",
