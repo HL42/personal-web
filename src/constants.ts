@@ -3,6 +3,7 @@ import type { Project, Experience, SocialLink } from './types';
 import inventoryImage from './assets/inventory.jpg';
 import webBlogImage from './assets/web-blog.jpg';
 import waterlooEatImage from './assets/waterlooEat.jpg';
+import saveWiseImage from './assets/Save-wise.png';
 
 // 首页英雄区文字
 export const HERO_TEXT = {
@@ -13,6 +14,19 @@ export const HERO_TEXT = {
 
 // 项目列表数据
 export const PROJECTS: Project[] = [
+  {
+    id: 'save-wise',
+    title: "save-wise",
+    category: "Web Application",
+    year: "2026",
+    description: "A finance-focused web project for smarter saving decisions and money tracking.",
+    techStack: ["React", "Node.js","TypeScript, Tailwind CSS", "Vite", "mongoose"],
+    imageUrl: saveWiseImage,
+    link: "https://save-wise-theta.vercel.app/",
+    githubLink: "https://github.com/HL42/SaveWise.git",
+    period: "2026",
+    detailedDescription: "SaveWise is designed for users who want fast, conversational bookkeeping without sacrificing accounting correctness. Instead of forcing rigid form-based workflows, the platform accepts natural-language financial input (English/Chinese), resolves intent into structured transactions, updates account balances with asset/liability-safe logic, and visualizes portfolio value in a dual-currency context."
+  },
   {
     id: 'nexus',
     title: "Nexus Inventory",
