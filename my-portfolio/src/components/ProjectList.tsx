@@ -20,19 +20,21 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     >
       {/* 项目预览图区域 */}
       <div className="relative w-full h-[65%] rounded-[1.5rem] overflow-hidden bg-neutral-800">
-        <motion.img 
-          src={project.imageUrl} 
-          alt={project.title}
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-          variants={{
-            hover: { scale: 1.1 } // 悬停时放大
-          }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        />
+        {project.imageUrl && (
+          <motion.img
+            src={project.imageUrl}
+            alt={project.title}
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+            variants={{
+              hover: { scale: 1.1 } // 悬停时放大
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
-        
+
         {/* 悬停时显示的箭头图标 */}
-        <motion.div 
+        <motion.div
           className="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 text-white"
           variants={{
             hover: { opacity: 1, y: 0, rotate: 45 }

@@ -10,10 +10,10 @@ const App: React.FC = () => {
         {/* 顶部导航栏 */}
         <nav className="fixed top-0 left-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 pointer-events-none">
           {/* Logo 和联系按钮 */}
-          <Link to="/" className="text-sm font-bold tracking-widest uppercase pointer-events-auto cursor-pointer text-neutral-900 mix-blend-difference text-white">
+          <Link to="/" className="text-sm font-bold tracking-widest uppercase pointer-events-auto cursor-pointer mix-blend-difference text-white">
             FL.
           </Link>
-          <a href="mailto:fuquanlin347@gmail.com" className="text-sm font-medium hover:opacity-70 transition-opacity pointer-events-auto cursor-pointer text-neutral-900 mix-blend-difference text-white">
+          <a href="mailto:fuquanlin347@gmail.com" className="text-sm font-medium hover:opacity-70 transition-opacity pointer-events-auto cursor-pointer mix-blend-difference text-white">
             Get in touch
           </a>
         </nav>

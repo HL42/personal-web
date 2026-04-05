@@ -4,6 +4,7 @@ import inventoryImage from './assets/inventory.jpg';
 import webBlogImage from './assets/web-blog.jpg';
 import waterlooEatImage from './assets/waterlooEat.jpg';
 import saveWiseImage from './assets/Save-wise.png';
+import roadMapImage from './assets/codepath.png';
 
 // 首页英雄区文字
 export const HERO_TEXT = {
@@ -15,12 +16,25 @@ export const HERO_TEXT = {
 // 项目列表数据
 export const PROJECTS: Project[] = [
   {
+    id: 'codepath',
+    title: "CodePath",
+    category: "EdTech Platform",
+    year: "2026",
+    description: "An all-in-one CS learning platform for beginners with dual-track architecture — serving both students and self-learners with AI-assisted development and direction diagnosis.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "shadcn/ui"],
+    imageUrl: roadMapImage,
+    link: "https://codepath-eta.vercel.app",
+    githubLink: "https://github.com/HL42/RoadMap-dev",
+    period: "2026",
+    detailedDescription: "CodePath is an all-in-one CS learning platform for beginners, designed to solve three core problems in self-directed learning: losing direction, passive consumption without practice, and failure to stay consistent. The platform uses a dual-track architecture serving both enrolled students (preserving handwritten code and exam readiness) and self-learners (AI-assisted rapid development). Unlike Codecademy or freeCodeCamp, CodePath features a built-in direction diagnostic system, module unlock dependencies, and mandatory project output flows — ensuring users are hands-on from day one rather than just bookmarking tutorials."
+  },
+  {
     id: 'save-wise',
     title: "save-wise",
     category: "Web Application",
     year: "2026",
     description: "A finance-focused web project for smarter saving decisions and money tracking.",
-    techStack: ["React", "Node.js","TypeScript, Tailwind CSS", "Vite", "mongoose"],
+    techStack: ["React", "Node.js", "TypeScript", "Tailwind CSS", "Vite", "mongoose"],
     imageUrl: saveWiseImage,
     link: "https://save-wise-theta.vercel.app/",
     githubLink: "https://github.com/HL42/SaveWise.git",
