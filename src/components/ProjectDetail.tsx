@@ -53,7 +53,9 @@ const ProjectDetail: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="rounded-[2rem] overflow-hidden bg-neutral-100 shadow-sm aspect-video mb-12"
           >
-            <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+            {project.imageUrl && (
+              <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+            )}
           </motion.div>
 
           <motion.div
