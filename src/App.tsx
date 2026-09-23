@@ -1,7 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import Home from './components/Home';
+import Nav from './components/Nav';
 import ProjectDetail from './components/ProjectDetail';
 
 const App: React.FC = () => {
@@ -10,25 +11,22 @@ const App: React.FC = () => {
     <MotionConfig reducedMotion="user">
       <Router>
         <div className="min-h-screen bg-[#FAFAFA] text-neutral-900 selection:bg-neutral-900 selection:text-white px-6 md:px-12 lg:px-24">
-          {/* 顶部导航栏 */}
-          <nav className="fixed top-0 left-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50 pointer-events-none">
-            {/* Logo 和联系按钮 */}
-            <Link to="/" className="text-sm font-bold tracking-widest uppercase pointer-events-auto cursor-pointer mix-blend-difference text-white">
-              FL.
-            </Link>
-            <a href="mailto:fuquanlin347@gmail.com" className="text-sm font-medium hover:opacity-70 transition-opacity pointer-events-auto cursor-pointer mix-blend-difference text-white">
-              Get in touch
-            </a>
-          </nav>
+          {/* 顶部渐隐：页面滚到导航下方时淡出，避免小节标题和分隔线与导航文字叠在一起。
+              z-40 位于导航（z-50）之下、内容之上。 */}
+          <div
+            className="fixed top-0 left-0 w-full h-24 bg-gradient-to-b from-[#FAFAFA] via-[#FAFAFA]/85 to-transparent z-40 pointer-events-none"
+            aria-hidden="true"
+          />
 
-          {/* 主要内容区域 */}
+          <Nav />
+
           <main className="max-w-7xl mx-auto w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/project/:id" element={<ProjectDetail />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </main>
-
         </div>
       </Router>
     </MotionConfig>

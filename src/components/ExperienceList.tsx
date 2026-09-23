@@ -1,79 +1,85 @@
-// 经历和技能列表组件
 import React from 'react';
-import { EXPERIENCE, SKILLS } from '../constants';
 import { motion } from 'framer-motion';
+import { EXPERIENCE } from '../data/experience';
+import type { Experience } from '../types';
+import { useEntrance } from '../lib/motion';
 
-const ExperienceList: React.FC = () => {
+const ExperienceEntry: React.FC<{ experience: Experience; index: number }> = ({
+  experience,
+  index,
+}) => {
+  const secondary = Boolean(experience.secondary);
+  const entrance = useEntrance();
+
   return (
-    <section className="py-24 grid grid-cols-1 md:grid-cols-2 gap-16">
-      
-      {/* 工作经历列 */}
-      <div>
-        <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-8">Experience</h2>
-        <div className="space-y-12">
-          {EXPERIENCE.map((exp) => (
-            <motion.div 
-              key={exp.id}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+    <motion.div
+      initial={entrance({ opacity: 0, y: 16 })}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className={secondary ? 'pt-10 border-t border-neutral-200' : ''}
+    >
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h3
+          className={
+            secondary
+              ? 'text-base font-medium text-neutral-500'
+              : 'text-xl md:text-2xl font-semibold tracking-tight text-neutral-900'
+          }
+        >
+          {experience.role}
+        </h3>
+        {experience.period && (
+          <span className="text-sm text-neutral-400 tabular-nums">{experience.period}</span>
+        )}
+      </div>
+
+      <p className={`mt-1.5 text-sm ${secondary ? 'text-neutral-400' : 'text-neutral-500'}`}>
+        {experience.company}
+        {experience.location ? ` · ${experience.location}` : ''}
+      </p>
+
+      {experience.summary && (
+        <p className="mt-5 text-neutral-600 leading-relaxed max-w-3xl">{experience.summary}</p>
+      )}
+
+      <ul className={`mt-5 space-y-2.5 ${secondary ? 'opacity-70' : ''}`}>
+        {experience.responsibilities.map((item) => (
+          <li
+            key={item}
+            className={`leading-relaxed pl-5 border-l ${
+              secondary
+                ? 'text-neutral-500 text-sm border-neutral-200'
+                : 'text-neutral-600 border-neutral-300'
+            }`}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      {experience.stack && experience.stack.length > 0 && (
+        <div className="mt-6 flex flex-wrap gap-2">
+          {experience.stack.map((tech) => (
+            <span
+              key={tech}
+              className="font-mono text-[11px] text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full"
             >
-              <div className="flex justify-between items-baseline mb-2">
-                <h3 className="text-xl font-medium text-neutral-900">{exp.role}</h3>
-                <span className="text-sm text-neutral-400">{exp.period}</span>
-              </div>
-              <div className="mb-4 text-neutral-500 text-sm">
-                {exp.company}, {exp.location}
-              </div>
-              <ul className="list-none space-y-2">
-                {exp.responsibilities.map((resp: string, idx: number) => (
-                  <li key={idx} className="text-neutral-600 text-sm leading-relaxed pl-4 border-l border-neutral-200">
-                    {resp}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+              {tech}
+            </span>
           ))}
         </div>
-      </div>
-
-      {/* 教育和技能列 */}
-      <div>
-        <div className="mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-8">Education</h2>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-xl font-medium text-neutral-900">Wilfrid Laurier University</h3>
-            <p className="text-neutral-500 mt-2">Bachelor of Science, Major in Computer Science</p>
-            <p className="text-neutral-400 text-sm mt-1">Waterloo, Ontario • Expected May 2027</p>
-          </motion.div>
-        </div>
-
-        <div>
-          <h2 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-8">Technical Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {SKILLS.map((skill, index) => (
-              <motion.span 
-                key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="text-sm text-neutral-600 bg-neutral-100 px-3 py-1.5 rounded-sm"
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-    </section>
+      )}
+    </motion.div>
   );
 };
+
+const ExperienceList: React.FC = () => (
+  <div className="space-y-12 md:space-y-14">
+    {EXPERIENCE.map((experience, index) => (
+      <ExperienceEntry key={experience.id} experience={experience} index={index} />
+    ))}
+  </div>
+);
 
 export default ExperienceList;
