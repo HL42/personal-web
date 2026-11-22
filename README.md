@@ -77,3 +77,45 @@ src/
 ---
 
 Made with ❤️ using React + TypeScript + Vite
+
+## Project content verification (2026-11-21)
+
+Project content lives in `src/data/projects.ts`. This is a reviewed snapshot, not a scheduled GitHub synchronization.
+
+- Featured: Ciravo, RepoWiki, SaveWise. More Projects: Production Engineering & CI/CD and PersonalMemo.
+- Enterprise RAG Agent, Nexus Inventory, Dynamic Blog, Waterloo Eat, and CodePath were removed from the portfolio at the owner’s request.
+- RepoWiki and LLM Wiki refer to the same repository; only one card is shown.
+- SaveWise was checked against its latest public README and local client dependencies. The current app uses Supabase/PostgreSQL, not MongoDB or AI bookkeeping.
+- RepoWiki was checked against its public README and local Go/Vue source. Enterprise RAG Agent was checked against its public README and chat route.
+- Ciravo's public landing page is available; its supplied GitHub repository returns 404. Its technology stack and individual implementation contributions remain unverified. Public product previews are described as pre-launch, not shipped functionality.
+- PersonalMemo was verified from local README, package manifest, and source structure. No private repository URL or memory content is published.
+- Ciravo and SaveWise images are browser captures of their public websites. SaveWise's public demo control is disabled, so its image shows the sign-in screen. RepoWiki and Enterprise RAG Agent use data-flow diagrams, not fabricated screenshots.
+- Existing archive descriptions remain historical claims; their implementations were not freshly audited. The listed public demo and repository links returned HTTP 200. Waterloo Eat's older GitHub repository is absent from the current public repository list, so its GitHub button was removed; its live site remains accessible.
+- Public repository scan excluded forks, course repositories, coding submissions, profile repositories, and sites without enough confirmed engineering detail.
+
+Checks: `npx eslint src`, `npx tsc -b`, and `npm run build`. Full `npm run lint` also scans the pre-existing untracked legacy `my-portfolio/` directory and fails on an unterminated string in its `src/constants.ts`; that unrelated directory is not modified here. Node 20.13.1 produces a Vite version warning; use Node 22.12+ for supported tooling.
+
+## Phase 1 reference recreation (2026-11-22)
+
+The default entry now runs the independent recreation in `src/recreation/`.
+Existing personal portfolio components, data, and media remain in the repository;
+Phase 2 personalization has not begun. See `PRODUCT.md` and `DESIGN.md` for scope
+and measured design values, and `public/study/ASSET-LICENSES.txt` for provenance.
+
+Use Node 22.14+ (Vite 7 requires Node 20.19+ or 22.12+):
+
+```sh
+npm install
+npm run dev -- --host 127.0.0.1
+npm run typecheck
+npm run build
+npm run test:browser
+npm run qa:capture
+```
+
+Browser QA uses an installed Google Chrome via Playwright (`channel: 'chrome'`);
+it does not install or access the user's browser profile. Run the dev server before
+browser tests or captures. The comparison gallery is at `/qa/index.html` during
+local development. Raw measurements and both visual rounds live in `qa/`.
+The contact form is a local interaction demo and sends nothing. All project media
+are original replacement interfaces, rather than copied reference client assets.

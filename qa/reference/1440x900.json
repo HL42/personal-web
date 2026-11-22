@@ -1,0 +1,460 @@
+{
+  ".hero": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 900,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "135px 56px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".hero__top": [
+    {
+      "x": 56,
+      "y": 135,
+      "width": 1328,
+      "height": 16,
+      "font": "\"Geist Mono\", monospace, monospace",
+      "fontSize": "12px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "12px",
+      "letterSpacing": "0.72px"
+    }
+  ],
+  ".hero__name": [
+    {
+      "x": 56,
+      "y": 196,
+      "width": 1328,
+      "height": 526.609375,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "45px 0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".hero__line": [
+    {
+      "x": 56,
+      "y": 202.140625,
+      "width": 1328,
+      "height": 257.15625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "273.6px",
+      "lineHeight": "235.296px",
+      "variation": "normal",
+      "padding": "10.944px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "-2.736px"
+    },
+    {
+      "x": 56,
+      "y": 459.296875,
+      "width": 1328,
+      "height": 257.15625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "273.6px",
+      "lineHeight": "235.296px",
+      "variation": "normal",
+      "padding": "10.944px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "-2.736px"
+    }
+  ],
+  ".hero__bottom": [
+    {
+      "x": 56,
+      "y": 767.609375,
+      "width": 1328,
+      "height": 132.390625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px 0px 40px",
+      "margin": "0px",
+      "gap": "28px",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".hero__intro": [
+    {
+      "x": 56,
+      "y": 767.609375,
+      "width": 424,
+      "height": 92.390625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "22px",
+      "lineHeight": "30.8px",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".header": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 72,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "18px 56px",
+      "margin": "0px",
+      "gap": "16px",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".marquee": [
+    {
+      "x": 0,
+      "y": 900,
+      "width": 1440,
+      "height": 116,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "18px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".selected-work": [
+    {
+      "x": 0,
+      "y": 1016,
+      "width": 1440,
+      "height": 1741,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "126px 56px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".selected-work__grid": [
+    {
+      "x": 56,
+      "y": 1190,
+      "width": 1328,
+      "height": 1441,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "57.6px",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".selected-work__row": [
+    {
+      "x": 56,
+      "y": 1190,
+      "width": 838.40625,
+      "height": 360,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "34px 0px",
+      "margin": "0px",
+      "gap": "16px 28px",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 56,
+      "y": 1550,
+      "width": 838.40625,
+      "height": 360,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "34px 0px",
+      "margin": "0px",
+      "gap": "16px 28px",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 56,
+      "y": 1910,
+      "width": 838.40625,
+      "height": 360,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "34px 0px",
+      "margin": "0px",
+      "gap": "16px 28px",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 56,
+      "y": 2270,
+      "width": 838.40625,
+      "height": 360,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "34px 0px",
+      "margin": "0px",
+      "gap": "16px 28px",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".selected-work__dock": [
+    {
+      "x": 952,
+      "y": 1190,
+      "width": 432,
+      "height": 582,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".up-close": [
+    {
+      "x": 0,
+      "y": 2757,
+      "width": 1440,
+      "height": 778,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "90px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".up-close__frame": [
+    {
+      "x": 56,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 501.59375,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 947.1875,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 1392.78125,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 1838.375,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 2283.96875,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 2729.5625,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    },
+    {
+      "x": 3175.15625,
+      "y": 2895,
+      "width": 417.59375,
+      "height": 522,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".statement": [
+    {
+      "x": 0,
+      "y": 3535,
+      "width": 1440,
+      "height": 1350,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".statement__text": [
+    {
+      "x": 56,
+      "y": 3854.28125,
+      "width": 1200,
+      "height": 305.4375,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "74.88px",
+      "lineHeight": "76.3776px",
+      "variation": "\"wdth\" 90, \"wght\" 600",
+      "padding": "0px",
+      "margin": "0px",
+      "gap": "normal 19.4688px",
+      "letterSpacing": "-1.4976px"
+    }
+  ],
+  ".service-tiles": [
+    {
+      "x": 0,
+      "y": 4885,
+      "width": 1440,
+      "height": 492.4375,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "90px 56px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".footer": [
+    {
+      "x": 0,
+      "y": 5417.4375,
+      "width": 1440,
+      "height": 494.625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "variation": "normal",
+      "padding": "126px 56px 28px",
+      "margin": "40px 0px 0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ],
+  ".footer__big": [
+    {
+      "x": 56,
+      "y": 5576.4375,
+      "width": 1328,
+      "height": 243.625,
+      "font": "Archivo, \"Archivo Fallback\", sans-serif",
+      "fontSize": "259.2px",
+      "lineHeight": "222.912px",
+      "variation": "normal",
+      "padding": "10.368px 0px",
+      "margin": "0px",
+      "gap": "normal",
+      "letterSpacing": "normal"
+    }
+  ]
+}

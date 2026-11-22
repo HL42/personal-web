@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Phase 1 browser diagnostics (comparison captures remain reviewable)
+qa/test-results/
+qa/test-report/

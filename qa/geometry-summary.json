@@ -1,0 +1,476 @@
+{
+  "1440x900": {
+    "round-1": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__bottom": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": -38.188,
+        "height_delta_px": 76.359
+      },
+      ".service-tiles": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 61.0
+      },
+      ".footer__big": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      }
+    },
+    "round-2": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__bottom": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".service-tiles": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer__big": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      }
+    }
+  },
+  "1280x800": {
+    "round-1": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__bottom": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".service-tiles": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 61.0
+      },
+      ".footer__big": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      }
+    },
+    "round-2": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__bottom": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".service-tiles": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer__big": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      }
+    }
+  },
+  "390x844": {
+    "round-1": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 2.469
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 2.469
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 2.531
+      },
+      ".hero__bottom": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".service-tiles": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 34.0
+      },
+      ".footer__big": {
+        "y_delta_px": 2.469,
+        "height_delta_px": 0.0
+      }
+    },
+    "round-2": {
+      ".hero": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__top": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__name": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__line": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__bottom": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".hero__intro": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".header": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".marquee": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__grid": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__row": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".selected-work__dock": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".up-close__frame": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".statement__text": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".service-tiles": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      },
+      ".footer__big": {
+        "y_delta_px": 0.0,
+        "height_delta_px": 0.0
+      }
+    }
+  }
+}

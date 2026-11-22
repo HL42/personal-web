@@ -175,6 +175,9 @@ const ProjectDetail: React.FC = () => {
                     {tech}
                   </span>
                 ))}
+                {project.techStack.length === 0 && (
+                  <p className="text-sm text-neutral-600">Not publicly verified.</p>
+                )}
               </div>
             </div>
 

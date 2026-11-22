@@ -32,7 +32,7 @@ const Home: React.FC = () => {
         <FeaturedWork />
         <div className="mt-20">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-400 mb-2">
-            Other Projects
+            More Projects
           </h3>
           <Archive />
         </div>

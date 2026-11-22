@@ -1,10 +1,106 @@
 import type { Project } from '../types';
 // 只有精选项目卡片会渲染配图，归档项目是纯文字列表，因此不引用图片资源
-import inventoryImage from '../assets/inventory.jpg';
-import saveWiseImage from '../assets/Save-wise.png';
+import ciravoImage from '../assets/ciravo-live.jpg';
+import saveWiseImage from '../assets/savewise-live.jpg';
 
 /** 首页精选工程，按重要性排序 */
 export const FEATURED_PROJECTS: Project[] = [
+  {
+    "id": "ciravo",
+    "title": "Ciravo",
+    "subtitle": "Discover local events and connect through shared plans",
+    "category": "Social Discovery",
+    "year": "2026",
+    "featured": true,
+    "summary": "An event discovery and social connection product. The public launch site previews nearby events, saved plans, messaging, and meeting people through shared interests; the app is coming soon.",
+    "techStack": [],
+    "imageUrl": ciravoImage,
+    "link": "https://ciravo.app/",
+    "caseStudy": {
+      "framingNote": "Pre-launch product. The public site shows product previews; the application source is not publicly accessible.",
+      "built": [
+        "Public product previews cover event discovery, maps, conversations, and attendee profiles."
+      ],
+      "challenges": [
+        "Public launch remains pending. The waitlist form is currently under development."
+      ]
+    }
+  },
+  {
+    "id": "repowiki",
+    "title": "RepoWiki",
+    "subtitle": "Turn source code into a searchable, conversational knowledge base",
+    "category": "AI Developer Tool",
+    "year": "2026",
+    "featured": true,
+    "summary": "A local-first code knowledge tool that classifies source files, generates Markdown documentation, and answers questions with retrieval. SHA-256 change detection reprocesses only changed files.",
+    "techStack": [
+      "Go",
+      "Vue 3",
+      "Vite",
+      "DeepSeek",
+      "Meilisearch (optional)"
+    ],
+    "githubLink": "https://github.com/HL42/Repowiki",
+    "caseStudy": {
+      "problem": "Understanding an unfamiliar repository requires connecting implementation details scattered across source files and documentation.",
+      "built": [
+        "Import code and documents, classify by technical layer and business domain, and generate a module index.",
+        "Use an inverted index for retrieval and DeepSeek for multi-turn questions over generated knowledge.",
+        "Persist knowledge as Markdown and YAML on the filesystem.",
+        "Bind the local API to loopback and validate Host and Origin headers."
+      ],
+      "flow": [
+        {
+          "label": "Source files"
+        },
+        {
+          "label": "Classify + summarize"
+        },
+        {
+          "label": "Markdown knowledge"
+        },
+        {
+          "label": "Retrieve + answer"
+        }
+      ],
+      "framingNote": "Local application with macOS and Windows release packages. No hosted demo is advertised."
+    }
+  },
+  {
+    "id": "save-wise",
+    "title": "SaveWise",
+    "subtitle": "Know what you can spend and when credit cards are due",
+    "category": "Personal Finance",
+    "year": "2026",
+    "featured": true,
+    "summary": "A bilingual, mobile-first ledger that starts from current balances and estimates spendable cash against upcoming bills. PostgreSQL transactions, idempotency, and version checks protect financial writes.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Supabase Auth",
+      "PostgreSQL",
+      "Row-Level Security"
+    ],
+    "imageUrl": saveWiseImage,
+    "link": "https://save-wise-theta.vercel.app/",
+    "githubLink": "https://github.com/HL42/SaveWise",
+    "caseStudy": {
+      "problem": "A useful personal ledger should start from today’s balances without requiring a complete reconstruction of past spending.",
+      "built": [
+        "Track expenses, income, refunds, transfers, repayments, reconciliation, and undo.",
+        "Store amounts as integer cents and report CAD and CNY separately.",
+        "Allocate partial repayments to the earliest due bills.",
+        "Isolate accounts with authenticated identity and row-level security.",
+        "Provide English and Chinese interfaces with mobile navigation and bottom-sheet entry."
+      ],
+      "framingNote": "Current version uses Supabase, not MongoDB. No AI bookkeeping, bank synchronization, automatic exchange rates, or offline entry."
+    }
+  },
+];
+
+/** 更早期或非核心方向的工程，在首页以紧凑列表呈现 */
+export const ARCHIVE_PROJECTS: Project[] = [
   {
     id: 'production-engineering',
     title: 'Production Engineering & CI/CD',
@@ -12,7 +108,7 @@ export const FEATURED_PROJECTS: Project[] = [
     category: 'Platform Engineering',
     year: '2026',
     period: 'May – Aug 2026',
-    featured: true,
+    featured: false,
     summary:
       'Standardized CI/CD across roughly seven Go and Node.js repositories using Jenkins Multibranch Pipelines — reusable pipeline structure, blocking test gates, deployment validation, and rollback-oriented release workflows.',
     techStack: ['Jenkins', 'Go', 'Node.js', 'Playwright', 'Prometheus', 'Grafana', 'Shell', 'Linux'],
@@ -83,147 +179,23 @@ export const FEATURED_PROJECTS: Project[] = [
       framingNote:
         'This was internship work on an existing set of services, not a greenfield platform built from scratch.',
     },
-  },
-  {
-    id: 'save-wise',
-    title: 'SaveWise',
-    subtitle: 'Conversational bookkeeping that keeps the accounting correct',
-    category: 'Full-Stack Application',
-    year: '2026',
-    period: '2026',
-    featured: true,
-    summary:
-      'Accepts natural-language financial input in English or Chinese and resolves it into structured transactions, with asset/liability-aware balance updates and a dual-currency portfolio view.',
-    techStack: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Mongoose', 'Vite', 'Tailwind CSS'],
-    imageUrl: saveWiseImage,
-    link: 'https://save-wise-theta.vercel.app/',
-    githubLink: 'https://github.com/HL42/SaveWise.git',
-    caseStudy: {
-      problem:
-        'Recording what you spend is usually a trade-off between two bad options: form-based bookkeeping that produces clean data but is tedious enough that people stop doing it, and quick free-text notes that are fast but leave you with records you cannot compute on. SaveWise takes conversational input and resolves it into proper transaction records, so entering a purchase is one sentence without giving up accounting correctness.',
-      flowCaption: 'From a written sentence to a value the rest of the system can compute on.',
-      flow: [
-        { label: 'Natural-language input', phase: 'Input', note: 'English or Chinese' },
-        { label: 'Intent resolution', phase: 'Parsing', note: 'amount, category, account, direction' },
-        { label: 'Structured transaction', phase: 'Parsing', note: 'typed record' },
-        { label: 'Balance update', phase: 'Accounting', note: 'asset / liability aware' },
-        { label: 'Portfolio view', phase: 'Presentation', note: 'dual-currency totals' },
-      ],
-      built: [
-        'Natural-language input path that accepts everyday phrasing in English and Chinese and resolves it into a structured transaction.',
-        'Transaction model covering amount, category, account, and direction, so free text becomes a record the rest of the system can compute on.',
-        'Asset/liability-aware balance logic: each transaction updates the affected account with the correct sign, keeping balances consistent as records accumulate.',
-        'Dual-currency portfolio view that reports holdings across more than one currency instead of assuming a single-currency account.',
-        'Full-stack implementation: React and TypeScript client, Node.js API, MongoDB persistence through Mongoose.',
-      ],
-      decisions: [
-        {
-          title: 'Resolve to a structured record — never store the raw sentence as the record',
-          detail:
-            'The conversational input is an interface, not a data model. Parsing to a typed transaction at the boundary means balances, totals, and later features all operate on consistent fields, and a change to the parser cannot silently corrupt stored history.',
-        },
-        {
-          title: 'Keep balance arithmetic in one place',
-          detail:
-            'Scattering "add or subtract depending on type" across screens is how balances drift apart from each other. Centralizing the sign and asset/liability rules in a single layer makes the behaviour testable and keeps every view consistent with the same source of truth.',
-        },
-        {
-          title: 'Treat liabilities as a first-class concept',
-          detail:
-            'Modelling what you owe as its own concept, rather than as a negative number sitting in an asset field, keeps net-worth reporting correct and leaves room to represent the distinction properly in the interface.',
-        },
-      ],
-      challenges: [
-        'Natural language is ambiguous about exactly the things the data model cares about most — which account, which direction, whether an entry is income or a transfer — so the parser has to resolve intent rather than only extract numbers.',
-        'Supporting two languages means the same underlying record can be described very differently by different users, which pushes the resolution logic to work on meaning rather than on fixed keyword patterns.',
-        'Currency handling is a data-model problem before it is a display problem: balances held in different currencies cannot simply be summed.',
-      ],
-    },
-  },
-  {
-    id: 'nexus',
-    title: 'Nexus Inventory',
-    subtitle: 'Inventory management where the hard part is the spreadsheet you already have',
-    category: 'Full-Stack Application',
-    year: '2025',
-    period: 'Nov 2025',
-    featured: true,
-    summary:
-      'Inventory dashboard built around bulk spreadsheet import and export, so existing records can be migrated in and reports taken out without hand-rekeying anything.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Material UI', 'SheetJS'],
-    imageUrl: inventoryImage,
-    link: 'https://inventory-system-liart-iota.vercel.app/',
-    githubLink: 'https://github.com/HL42/inventory-system',
-    caseStudy: {
-      problem:
-        'Inventory data rarely starts in the new system. It starts in a spreadsheet that a business has been maintaining for years, with its own column names and formatting. A CRUD interface on its own just moves the re-keying problem somewhere else, so the import and export path is the part that decides whether adopting the tool is realistic.',
-      built: [
-        'Bulk import and export built on SheetJS, taking an existing spreadsheet and loading it into the inventory schema in one operation.',
-        'Mapping layer that translates arbitrary legacy column names onto the internal record shape, instead of requiring the source file to be reformatted by hand first.',
-        'Export path that produces a report from live data in a single step.',
-        'CRUD over inventory records backed by MongoDB, with a Material UI DataGrid front end suited to large, sortable tables.',
-      ],
-      decisions: [
-        {
-          title: 'Treat migration as a feature, not a setup step',
-          detail:
-            'If getting existing data in is a manual chore, the tool does not get adopted. Making import and export a first-class flow rather than a one-time script means the same path is reusable every time a new batch of records arrives.',
-        },
-        {
-          title: 'Absorb the source format instead of demanding a clean one',
-          detail:
-            'Real spreadsheets do not match the target schema. Handling that translation inside the application keeps the requirement off the user, who would otherwise have to normalise their own file before the tool would accept it.',
-        },
-        {
-          title: 'Pick a data grid that survives real tables',
-          detail:
-            'Inventory lists get long. Material UI DataGrid provides sorting, paging, and column control for large datasets without rebuilding that behaviour from scratch.',
-        },
-      ],
-    },
-  },
-];
-
-/** 更早期或非核心方向的工程，在首页以紧凑列表呈现 */
-export const ARCHIVE_PROJECTS: Project[] = [
-  {
-    id: 'codepath',
-    title: 'CodePath',
-    category: 'EdTech Platform',
-    year: '2026',
-    featured: false,
-    summary:
-      'Learning platform for beginners with module unlock dependencies and a direction-diagnostic flow, built on Next.js and Supabase.',
-    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'shadcn/ui'],
-    link: 'https://codepath-eta.vercel.app',
-    githubLink: 'https://github.com/HL42/RoadMap-dev',
-  },
-  {
-    id: 'blog-app',
-    title: 'Dynamic Blog',
-    category: 'Web Application',
-    year: '2025',
-    period: 'Jan 2025 – Mar 2025',
-    featured: false,
-    summary:
-      'Multi-user blogging platform with REST endpoints, news integration, and persistent bookmarking. Migrated from browser storage to a MERN stack.',
-    techStack: ['React', 'Express.js', 'MongoDB Atlas', 'GNewsAPI'],
-    link: 'https://blog-app-92jy.vercel.app/',
-    githubLink: 'https://github.com/HL42/BlogApp',
-  },
-  {
-    id: 'waterloo-eat',
-    title: 'Waterloo Eat',
-    category: 'Web Application',
-    year: '2025',
-    period: 'Sep 2025',
-    featured: false,
-    summary:
-      'Bilingual restaurant discovery site for the Waterloo community. Built with HTML, CSS, and vanilla JavaScript.',
-    techStack: ['JavaScript', 'HTML', 'CSS'],
-    link: 'https://hl42.github.io/WaterlooEat-App/',
-    githubLink: 'https://github.com/HL42/WaterlooEat-App',
-  },
+  },{
+  "id": "personal-memo",
+  "title": "PersonalMemo",
+  "category": "Agent Infrastructure",
+  "year": "2026",
+  "featured": false,
+  "summary": "A portable local memory store for MCP-capable agents. Markdown holds current context; append-only JSONL tracks revisions. Includes a CLI, search, and an MCP stdio server.",
+  "techStack": [
+    "TypeScript",
+    "Node.js",
+    "MCP SDK",
+    "Zod"
+  ],
+  "caseStudy": {
+    "framingNote": "Local project verified from source. No public repository or hosted demo is available."
+  }
+},
 ];
 
 export const ALL_PROJECTS: Project[] = [...FEATURED_PROJECTS, ...ARCHIVE_PROJECTS];
