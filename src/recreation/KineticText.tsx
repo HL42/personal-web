@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { clamp, damp, useFrame } from "./motion";
+import { useCallback, useEffect, useRef } from "react";
+import { clamp, damp, useFrame } from "./motion-runtime";
 type Letter = {
   el: HTMLElement;
   x: number;
@@ -24,7 +24,7 @@ export function KineticText({
       letters: [],
       room: 0,
     });
-  const measure = () => {
+  const measure = useCallback(() => {
     const root = ref.current;
     if (!root) return;
     const letters = [
@@ -62,10 +62,10 @@ export function KineticText({
         amount: 0,
       })),
     };
-  };
+  }, [fit, radius]);
   useEffect(() => {
     document.fonts.ready.then(measure);
-  }, [text, fit]);
+  }, [text, measure]);
   useFrame((f) => {
     const m = metrics.current;
     let needed = 0;

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { readFileSync } from "node:fs";
+
 const skipIntro = async (page: import("@playwright/test").Page) => {
   await page.addInitScript(() =>
     sessionStorage.setItem("study-intro-seen", "1"),
@@ -15,39 +15,47 @@ for (const [width, height] of [
   [1280, 800],
   [390, 844],
 ]) {
-  test(`measured reference layout and no overflow ${width}×${height}`, async ({
+  test(`warm orange palette, preserved design, real identity and no overflow ${width}×${height}`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height });
     await skipIntro(page);
     await ready(page);
     await page.waitForTimeout(300);
-    const reference = JSON.parse(
-      readFileSync(`qa/reference/${width}x${height}.json`, "utf8"),
+    const theme = await page.evaluate(() => {
+      const style = getComputedStyle(document.documentElement);
+      return {
+        bg: style.getPropertyValue("--study-bg"),
+        text: style.getPropertyValue("--study-text"),
+        accent: style.getPropertyValue("--study-accent"),
+        out: style.getPropertyValue("--study-out"),
+      };
+    });
+    expect(theme.bg).toBe("#141210");
+    expect(theme.text).toBe("#f2ede4");
+    expect(theme.accent).toBe("#ff9b71");
+    expect(theme.out).toBe("cubic-bezier(0.16, 1, 0.3, 1)");
+    const title = page.locator(".study-hero-name");
+    await expect(title).toContainText("FUQUAN");
+    await expect(title).toContainText("LIN");
+    const lines = await page.locator(".study-hero-line").evaluateAll((els) =>
+      els.map((el) => ({
+        width: el.clientWidth,
+        scroll: el.scrollWidth,
+        child: el.firstElementChild.getBoundingClientRect().width,
+      })),
     );
-    for (const [ref, local] of Object.entries({
-      ".hero": ".study-hero",
-      ".hero__name": ".study-hero-name",
-      ".hero__line": ".study-hero-line",
-      ".marquee": ".study-marquee",
-      ".selected-work": ".study-selected",
-      ".up-close": ".study-gallery",
-      ".statement": ".study-statement",
-      ".service-tiles": ".study-services",
-      ".footer": ".study-footer",
-    })) {
-      const box = await page.locator(local).first().boundingBox();
-      expect(box, local).not.toBeNull();
-      expect(
-        Math.abs(box!.y - reference[ref][0].y),
-        `${local} vertical placement`,
-      ).toBeLessThan(3);
-      if (ref !== ".footer")
-        expect(
-          Math.abs(box!.height - reference[ref][0].height),
-          `${local} height`,
-        ).toBeLessThan(3);
+    expect(lines).toHaveLength(2);
+    for (const line of lines) {
+      expect(line.scroll).toBeLessThanOrEqual(line.width + 1);
+      expect(line.child).toBeLessThanOrEqual(line.width + 1);
     }
+    const header = await page.locator(".study-header").boundingBox();
+    expect(header!.y).toBe(0);
+    if (width > 700)
+      expect((await page.locator(".study-hero").boundingBox())!.height).toBe(
+        height,
+      );
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -76,7 +84,7 @@ test("real variable font responds and restores without text scaling", async ({
   expect(wide.axes).not.toBe('"wdth" 70, "wght" 800');
   expect(wide.width).toBeGreaterThan(b!.width);
   expect(wide.transform).toBe("none");
-  await page.screenshot({ path: "qa/interactions/variable-font.png" });
+  await page.screenshot({ path: "qa/phase-2/interactions/variable-font.png" });
   await page.mouse.move(10, 890);
   await page.waitForTimeout(1800);
   expect(Math.abs((await letter.boundingBox())!.width - b!.width)).toBeLessThan(
@@ -88,7 +96,7 @@ test("intro can be skipped and appears once per session", async ({ page }) => {
   await expect(
     page.getByRole("dialog", { name: "Opening animation" }),
   ).toBeVisible();
-  await page.screenshot({ path: "qa/interactions/intro.png" });
+  await page.screenshot({ path: "qa/phase-2/interactions/intro.png" });
   await page.getByRole("button", { name: "Skip intro" }).click();
   await expect(
     page.getByRole("dialog", { name: "Opening animation" }),
@@ -110,7 +118,7 @@ test("mobile navigation supports keyboard, Escape, route transitions and focus",
     page.getByRole("button", { name: "Close", exact: true }),
   ).toHaveAttribute("aria-expanded", "true");
   await page.waitForTimeout(1000);
-  await page.screenshot({ path: "qa/interactions/mobile-menu.png" });
+  await page.screenshot({ path: "qa/phase-2/interactions/mobile-menu.png" });
   await page.keyboard.press("Shift+Tab");
   await expect(page.locator(".study-menu a").last()).toBeFocused();
   await page.keyboard.press("Escape");
@@ -122,13 +130,15 @@ test("mobile navigation supports keyboard, Escape, route transitions and focus",
     .click();
   await expect(page.locator(".study-cover")).toBeVisible();
   await page.waitForTimeout(650);
-  await page.screenshot({ path: "qa/interactions/transition.png" });
+  await page.screenshot({ path: "qa/phase-2/interactions/transition.png" });
   await expect(page.locator(".study-cover")).toBeHidden({ timeout: 5000 });
   await expect(page).toHaveURL(/#\/work$/);
   await expect(page.locator("#study-main")).toBeFocused();
   await expect(page.locator(".study-menu")).toHaveAttribute("inert", "");
 });
-test("work switches views and opens original sample case", async ({ page }) => {
+test("work switches views and opens a verified personal project", async ({
+  page,
+}) => {
   await skipIntro(page);
   await page.goto("/#/work");
   await page.getByRole("button", { name: "Grid", exact: true }).click();
@@ -137,12 +147,10 @@ test("work switches views and opens original sample case", async ({ page }) => {
   ).toHaveAttribute("aria-pressed", "true");
   await expect(
     page.locator(".study-project-grid .study-project-media"),
-  ).toHaveCount(4);
+  ).toHaveCount(3);
   await page.locator(".study-project-grid a").first().click();
-  await expect(page).toHaveURL(/#\/work\/fun-arena$/);
-  await expect(
-    page.getByText("Demonstration study", { exact: true }),
-  ).toBeVisible();
+  await expect(page).toHaveURL(/#\/work\/ciravo$/);
+  await expect(page.getByText("In development", { exact: true })).toBeVisible();
 });
 test("selected work focuses, follows pointer and pauses media", async ({
   page,
@@ -159,7 +167,9 @@ test("selected work focuses, follows pointer and pauses media", async ({
   await page.waitForTimeout(400);
   const after = await page.locator(".study-floating-preview").boundingBox();
   expect(Math.abs(after!.x - before!.x)).toBeGreaterThan(5);
-  await page.screenshot({ path: "qa/interactions/floating-preview.png" });
+  await page.screenshot({
+    path: "qa/phase-2/interactions/floating-preview.png",
+  });
   await page
     .getByRole("button", { name: "(Pause motion)", exact: true })
     .click();
@@ -195,7 +205,7 @@ test("gallery drags with inertia, prevents accidental navigation, and normal cli
       .evaluate((el) => getComputedStyle(el).transform),
   ).not.toBe(start);
   await page.locator(".study-gallery-item").nth(3).click();
-  await expect(page).toHaveURL(/#\/work\/wellpaws$/);
+  await expect(page).toHaveURL(/#\/work\/savewise$/);
 });
 test("native horizontal scrolling on touch", async ({ browser }) => {
   const context = await browser.newContext({
@@ -234,7 +244,7 @@ test("pinned statement illuminates words in scroll order", async ({ page }) => {
   expect(words[0]).toBe(1);
   expect(words.at(-1)).toBeCloseTo(0.14, 2);
   expect(words.filter((o) => o === 1).length).toBeGreaterThan(5);
-  await page.screenshot({ path: "qa/interactions/statement.png" });
+  await page.screenshot({ path: "qa/phase-2/interactions/statement.png" });
 });
 test("reduced motion keeps content, native cursor and direct route navigation", async ({
   page,
@@ -257,9 +267,11 @@ test("reduced motion keeps content, native cursor and direct route navigation", 
   await expect(page).toHaveURL(/#\/work$/);
   await expect(page.locator(".study-cover")).toBeHidden();
 });
-test("FAQ is exclusive and contact preview is local only", async ({ page }) => {
+test("experience accordion and real email draft remain local", async ({
+  page,
+}) => {
   await skipIntro(page);
-  await page.goto("/#/services/websites");
+  await page.goto("/#/experience");
   const questions = page.locator(".study-faq button");
   await questions.nth(1).click();
   await expect(questions.nth(0)).toHaveAttribute("aria-expanded", "false");
@@ -269,19 +281,29 @@ test("FAQ is exclusive and contact preview is local only", async ({ page }) => {
   page.on("request", (r) => {
     if (r.method() === "POST") requests.push(r.url());
   });
-  await page.getByRole("button", { name: "Website", exact: true }).click();
-  await page.getByRole("button", { name: "App design", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Software engineering", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Applied AI", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Website", exact: true }),
+    page.getByRole("button", { name: "Software engineering", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await page
     .getByRole("textbox", { name: "Your name" })
-    .fill("Preview visitor");
+    .fill("Portfolio visitor");
   await page
     .getByRole("textbox", { name: "Email address" })
-    .fill("preview@example.com");
-  await page.getByRole("button", { name: "Preview enquiry →" }).click();
-  await expect(page.getByRole("status")).toContainText("Nothing was sent");
+    .fill("visitor@example.com");
+  await page
+    .getByRole("textbox", { name: "Your message" })
+    .fill("I would like to discuss a software engineering opportunity.");
+  await page.getByRole("button", { name: "Open email draft →" }).click();
+  await expect(page.getByRole("status")).toContainText(
+    "Nothing has been submitted",
+  );
+  await expect(
+    page.getByRole("link", { name: "Open email app →" }),
+  ).toHaveAttribute("href", /^mailto:fuquanlin347@gmail.com\?subject=/);
   expect(requests).toEqual([]);
 });
 test("local assets load, footer fits and browser has no uncaught errors", async ({
@@ -341,7 +363,132 @@ test("storage notice dismisses, stays dismissed on scrolling, and can reopen", a
   await page.locator(".study-gallery").scrollIntoViewIfNeeded();
   await expect(notice).toBeHidden();
   await page
-    .getByRole("button", { name: "Cookie settings", exact: true })
+    .getByRole("button", { name: "Privacy settings", exact: true })
     .click();
   await expect(notice).toBeVisible();
+});
+
+test("three verified projects, authentic media and contact links", async ({
+  page,
+  request,
+}) => {
+  await skipIntro(page);
+  await ready(page);
+  await expect(page.locator(".study-work-row")).toHaveCount(3);
+  await expect(page.locator("#study-work-heading")).toHaveText(
+    "Selected work (03)",
+  );
+  expect(
+    (await page.locator(".study-work-name").allTextContents()).map((s) =>
+      s.replace(/\s/g, ""),
+    ),
+  ).toEqual([
+    "Ciravo",
+    "RepoWiki",
+    "SaveWise",
+  ]);
+  await expect(page.locator(".study-gallery .portfolio-diagram")).toHaveCount(
+    1,
+  );
+  await expect(page.locator(".study-gallery-item")).toHaveCount(5);
+  await expect(
+    page.locator('.study-footer a[href="https://github.com/HL42"]'),
+  ).toBeVisible();
+  await expect(
+    page.locator(
+      '.study-footer a[href="https://www.linkedin.com/in/fuquan-lin-1b3ba3290"]',
+    ),
+  ).toHaveCount(1);
+  const pdf = await request.get("/Fuquan-Lin-Resume.pdf");
+  expect(pdf.status()).toBe(200);
+  expect((await pdf.body()).subarray(0, 4).toString()).toBe("%PDF");
+  await expect(page).toHaveTitle("Fuquan Lin — Software Engineer");
+});
+
+test("all personal routes are free of reference identity and mobile overflow", async ({
+  page,
+}) => {
+  await skipIntro(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const route of [
+    "/",
+    "/work",
+    "/about",
+    "/experience",
+    "/contact",
+    "/work/ciravo",
+    "/work/repowiki",
+    "/work/savewise",
+  ]) {
+    await page.goto("/#" + route);
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(100);
+    expect(await page.locator("body").innerText()).not.toMatch(
+      /Mike|Wilcock|Manchester|WellPaws|ShopM2M|Fun Arena|Digital Media Team|Shopify|Webflow|Independent recreation/i,
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
+});
+
+test("verified architecture diagrams fit their case frames at all viewports", async ({
+  page,
+}) => {
+  await skipIntro(page);
+  for (const [width, height] of [
+    [1440, 900],
+    [1280, 800],
+    [390, 844],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const slug of ["repowiki"]) {
+      await page.goto("/#/work/" + slug);
+      await page.evaluate(() => document.fonts.ready);
+      await page.waitForTimeout(150);
+      const bounds = await page
+        .locator(".study-case-cover .portfolio-diagram-inner")
+        .evaluate((el) => ({
+          inner: el.clientHeight,
+          content: el.scrollHeight,
+          bottom: el.getBoundingClientRect().bottom,
+          last: el.querySelector("li:last-child").getBoundingClientRect()
+            .bottom,
+        }));
+      expect(bounds.content).toBeLessThanOrEqual(bounds.inner + 1);
+      expect(bounds.last).toBeLessThanOrEqual(bounds.bottom + 1);
+    }
+  }
+});
+
+test("transition labels stay hidden after fading while the cover departs", async ({ page }) => {
+  await skipIntro(page);
+  await ready(page);
+  for (const route of ["work", "about", "experience", "contact"]) {
+    await page.locator(`header a[href="#/${route}"]`).click();
+    const cover = page.locator(".study-cover");
+    await expect(cover).toBeVisible();
+    await page.waitForFunction(() => {
+      const content = document.querySelector(".study-cover-content")!;
+      return content.getAnimations().some((animation) =>
+        (animation.effect as KeyframeEffect).getKeyframes().some((frame) => frame.opacity === "0"),
+      );
+    });
+    // Finish only the fade; the staggered bars must continue their original exit.
+    await page.locator(".study-cover-content").evaluate((el) => {
+      const fade = el.getAnimations().find((animation) =>
+        (animation.effect as KeyframeEffect).getKeyframes().some((frame) => frame.opacity === "0"),
+      )!;
+      fade.finish();
+    });
+    await expect(page.locator(".study-cover-content")).toHaveCSS("opacity", "0");
+    if (route === "experience") {
+      await page.screenshot({path: "qa/phase-2/interactions/transition-residue-fixed.png"});
+    }
+    await expect(cover).toBeHidden();
+    await expect(page).toHaveURL(new RegExp(`#/${route}$`));
+    await expect(page.locator("#study-main")).toBeFocused();
+  }
 });

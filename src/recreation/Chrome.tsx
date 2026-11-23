@@ -1,3 +1,5 @@
+import { Magnetic } from "./motion";
+import { PERSON, NAVIGATION, SITE_COPY } from "../data/portfolio";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode, MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,8 +13,7 @@ import {
   useEngine,
   useFrame,
   useReduced,
-  Magnetic,
-} from "./motion";
+} from "./motion-runtime";
 const TransitionContext = createContext<(to: string, label: string) => void>(
   () => {},
 );
@@ -84,13 +85,23 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       requestAnimationFrame(() => resolve()),
     );
     const bars = [...p.querySelectorAll<HTMLElement>(".study-cover-bar")];
+    const content = p.querySelector<HTMLElement>(".study-cover-content")!;
+    // Reveal text only where every staggered bar already covers the page.
+    content.animate(
+      [{ clipPath: "inset(101% 0 0)" }, { clipPath: "inset(0 0 0)" }],
+      {
+        duration: 520,
+        delay: (bars.length - 1) * 40,
+        easing: COVER_EASE,
+        fill: "both",
+      },
+    );
     const entered = bars.map((el, i) =>
       el.animate(
         [{ transform: "translateY(101%)" }, { transform: "translateY(0)" }],
         { duration: 520, delay: i * 40, easing: COVER_EASE, fill: "forwards" },
       ),
     );
-    const titleEl = p.querySelector(".study-cover-title")!;
     const titleAnimations = [...p.querySelectorAll(".study-cover-letter")].map(
       (letter, index) =>
         letter.animate(
@@ -129,12 +140,18 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
           },
         ),
       );
-      titleEl.animate(
+      // Clip against the first departing bar, then keep the whole label hidden.
+      // A finished, unfilled fade would restore black text over the new page.
+      content.animate(
+        [{ clipPath: "inset(0 0 0)" }, { clipPath: "inset(0 0 101%)" }],
+        { duration: 500, easing: COVER_EASE, fill: "forwards" },
+      );
+      content.animate(
         [
           { opacity: 1, transform: "translateY(0)" },
           { opacity: 0, transform: "translateY(-80px)" },
         ],
-        { duration: 350, easing: COVER_EASE },
+        { duration: 350, easing: COVER_EASE, fill: "forwards" },
       );
       await Promise.all(exit.map((a) => a.finished));
       document.getElementById("study-main")?.focus({ preventScroll: true });
@@ -185,7 +202,7 @@ export function Clock() {
     const tick = () =>
       setTime(
         new Intl.DateTimeFormat("en-GB", {
-          timeZone: "Europe/London",
+          timeZone: PERSON.timezone,
           hour: "2-digit",
           minute: "2-digit",
         }).format(new Date()),
@@ -196,13 +213,7 @@ export function Clock() {
   }, []);
   return <>{time}</>;
 }
-const links = [
-  ["/", "Home"],
-  ["/work", "Work"],
-  ["/about", "About"],
-  ["/services", "Services"],
-  ["/contact", "Contact"],
-];
+const links = NAVIGATION;
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLElement>(null),
@@ -252,11 +263,11 @@ export function Navigation() {
     <>
       <header className="study-header">
         <StudyLink to="/" label="Home" className="study-wordmark" cursor="Home">
-          <b>REFERENCE</b>
-          <span>/ study</span>
+          <b>{PERSON.firstName}</b>
+          <span>{PERSON.lastName.toLowerCase()}</span>
         </StudyLink>
         <div className="study-header-time study-meta">
-          Manchester, UK <span>/</span> <Clock />
+          {PERSON.shortLocation} <span>/</span> <Clock />
         </div>
         <nav aria-label="Main navigation" className="study-nav-links">
           {links.slice(1).map(([to, label]) => (
@@ -266,7 +277,7 @@ export function Navigation() {
                 label={label}
                 className={to === "/contact" ? "study-nav-cta" : ""}
               >
-                {to === "/contact" ? "Start a project" : label}
+                {to === "/contact" ? "Contact" : label}
               </StudyLink>
             </Magnetic>
           ))}
@@ -311,9 +322,11 @@ export function Navigation() {
           </StudyLink>
         ))}
         <div className="study-menu-footer study-meta">
-          <span>Independent interaction study</span>
           <span>
-            Manchester, UK / <Clock />
+            {PERSON.name} · {PERSON.role}
+          </span>
+          <span>
+            {PERSON.shortLocation} / <Clock />
           </span>
         </div>
       </nav>
@@ -380,10 +393,7 @@ export function Intro() {
     speed = useRef(1);
   useEffect(() => {
     if (!show) return;
-    if (reduce) {
-      setShow(false);
-      return;
-    }
+    if (reduce) return;
     const el = ref.current;
     if (!el) return;
     let raf = 0,
@@ -490,17 +500,17 @@ export function Intro() {
       >
         Skip intro
       </button>
-      <div className="study-intro-name" aria-label="Reference study">
-        {"REFERENCE".split("").map((c, i) => (
+      <div className="study-intro-name" aria-label={PERSON.name}>
+        {PERSON.firstName.split("").map((c, i) => (
           <span className="study-intro-mask" key={i}>
             <span className="study-intro-letter">{c}</span>
           </span>
         ))}
-        <span className="study-intro-mark">s</span>
-        <i>tudy</i>
+        <span className="study-intro-mark">L</span>
+        <i>in</i>
       </div>
       <div className="study-intro-meta study-meta">
-        <span>Independent recreation / Phase 1</span>
+        <span>{PERSON.role} / Portfolio</span>
         <span ref={counter}>000</span>
       </div>
       <div className="study-intro-progress">
@@ -513,43 +523,34 @@ export function Footer() {
   const engine = useEngine();
   return (
     <footer className="study-footer">
-      <p className="study-meta study-footer-label">Got something in mind?</p>
-      <StudyLink to="/contact" label="Say hi" className="study-footer-title">
-        <KineticText text="LET'S TALK" radius={420} fit />
+      <p className="study-meta study-footer-label">
+        {PERSON.name} / {SITE_COPY.footerPrompt}
+      </p>
+      <StudyLink to="/contact" label="Contact me" className="study-footer-title">
+        <KineticText text={SITE_COPY.footerTitle} radius={420} fit />
       </StudyLink>
       <div className="study-footer-row study-meta">
-        <StudyLink to="/contact" label="Say hi">
-          Independent reference study
-        </StudyLink>
+        <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
         <div className="study-footer-socials">
-          <a
-            href="https://mikewilcockdesign.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Reference
+          <a href={PERSON.github} target="_blank" rel="noreferrer">
+            GitHub
           </a>
-          <a
-            href={
-              import.meta.env.DEV
-                ? "/qa/index.html"
-                : "/study/ASSET-LICENSES.txt"
-            }
-            target="_blank"
-            rel="noreferrer"
-          >
-            {import.meta.env.DEV ? "Compare" : "Credits"}
+          <a href={PERSON.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a href={PERSON.resume} target="_blank" rel="noreferrer">
+            Resume
           </a>
         </div>
         <span>
-          Manchester <Clock />
+          {PERSON.city} <Clock />
         </span>
         <button
           onClick={() =>
             window.dispatchEvent(new Event("study-open-preferences"))
           }
         >
-          Cookie settings
+          Privacy settings
         </button>
         <button
           onClick={() => {
@@ -560,14 +561,9 @@ export function Footer() {
           Back to top ↑
         </button>
       </div>
-      <p className="study-disclosure study-sr">
-        Phase 1 / Independent study. Original demonstration media. No
-        affiliation or live enquiries.
-      </p>
     </footer>
   );
 }
-
 export function ConsentNotice() {
   const [open, setOpen] = useState(false);
   const chosen = useRef(false);
@@ -608,9 +604,9 @@ export function ConsentNotice() {
       aria-label="Storage preferences"
     >
       <p>
-        <span className="study-meta study-accent">(Cookies)</span> This study
-        uses local storage to remember this choice. No analytics are loaded or
-        data sent.
+        <span className="study-meta study-accent">(Cookies)</span> This site
+        remembers display preferences on this device. No analytics or tracking
+        cookies are used.
       </p>
       <div>
         <button onClick={() => choose("declined")}>Decline</button>

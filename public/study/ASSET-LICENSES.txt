@@ -1,25 +1,6 @@
-Phase 1 independent reference recreation — asset provenance
-
-No original reference website source code, logo files, screenshots, project imagery,
-or video is shipped as application content. qa/reference contains non-shipping
-reference screenshots for the user's requested private comparison only.
-
-Archivo Variable (normal + italic): SIL Open Font License 1.1.
-Copyright 2020 The Archivo Project Authors.
-Source: https://github.com/google/fonts/tree/main/ofl/archivo
-Distribution: @fontsource-variable/archivo (npm).
-
-Geist Mono Variable: SIL Open Font License 1.1.
-Source: https://github.com/vercel/geist-font
-Distribution: @fontsource-variable/geist-mono (npm).
-
-Dog photograph: Unsplash photo 1552053831-71594a27632d.
-https://images.unsplash.com/photo-1552053831-71594a27632d
-Apparel photograph: Unsplash photo 1516257984-b1b4d707412e.
-https://images.unsplash.com/photo-1516257984-b1b4d707412e
-License: https://unsplash.com/license (download/use allowed under the Unsplash license).
-No claim of ownership, affiliation, original client work, or reference media equivalence.
-
-All sample UI, phone/browser framing, favicon, study identity, and grain texture
-are independently authored for this project. Sample store names are fictional.
-Reference designer and project names are factual comparison labels only.
+Fuquan Lin portfolio
+Archivo Variable and Geist Mono remain under the SIL Open Font License 1.1.
+See ARCHIVO-LICENSE.txt and GEIST-MONO-LICENSE.txt beside this file.
+The grain texture and FL favicon were independently authored for this portfolio.
+Project image provenance: /projects/PROVENANCE.txt.
+Phase 1 reference screenshots remain private QA history outside the production bundle.

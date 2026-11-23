@@ -1,0 +1,31 @@
+SaveWise
+Overview · 2026-11-22
+中
+Fictional data · No database connection
+Updated 11-22, 03:17 p.m.
+Refresh
+This demo uses fictional data. Sign in to use your own ledger.
+Spend with a clearer picture
+Next 30 days · Includes overdue bills
+Available to spend
+CAD
+$900.00
+Bank balances
+$2,400.00
+Set aside
+$1,200.00
+Upcoming bills
+$300.00
+How is this calculated?
+Coming due
+By due date · 1 unpaid
+View all
+示例信用卡
+Due in 3 days · 2026-11-25
+Remaining due $300.00
+Overview
+Due
+Add entry
+Accounts
+Activity
+CAD and CNY are separate · Based on confirmed data

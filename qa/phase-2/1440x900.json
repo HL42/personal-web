@@ -1,0 +1,47 @@
+{
+  "metrics": {
+    "title": "Fuquan Lin — Software Engineer",
+    "overflow": false,
+    "hero": [
+      {
+        "text": "FUQUANFUQUAN",
+        "fontSize": "273.6px",
+        "rect": {
+          "x": 56,
+          "y": 202.140625,
+          "width": 1328,
+          "height": 257.15625,
+          "top": 202.140625,
+          "right": 1384,
+          "bottom": 459.296875,
+          "left": 56
+        },
+        "scrollWidth": 1328
+      },
+      {
+        "text": "LINLIN",
+        "fontSize": "273.6px",
+        "rect": {
+          "x": 56,
+          "y": 459.296875,
+          "width": 1328,
+          "height": 257.15625,
+          "top": 459.296875,
+          "right": 1384,
+          "bottom": 716.453125,
+          "left": 56
+        },
+        "scrollWidth": 1328
+      }
+    ],
+    "tokens": {
+      "--study-bg": "#141210",
+      "--study-text": "#f2ede4",
+      "--study-accent": "#ff9b71",
+      "--study-out": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "--study-in-out": "cubic-bezier(0.76, 0, 0.24, 1)",
+      "--study-gutter": "clamp(20px, 4vw, 56px)"
+    }
+  },
+  "errors": []
+}

@@ -26,3 +26,6 @@ dist-ssr
 # Phase 1 browser diagnostics (comparison captures remain reviewable)
 qa/test-results/
 qa/test-report/
+
+qa/phase-2/test-results/
+qa/phase-2/test-report/

@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "test:browser": "playwright test",
-    "qa:capture": "node scripts/capture-study.mjs round-2"
+    "qa:capture": "node scripts/capture-portfolio.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

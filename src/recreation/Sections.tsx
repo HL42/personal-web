@@ -1,34 +1,35 @@
+import { Magnetic } from "./motion";
+import { PERSON, SITE_COPY } from "../data/portfolio";
 import { useRef, useState } from "react";
 import { KineticText } from "./KineticText";
 import { ProjectMedia } from "./Media";
 import { StudyLink } from "./Chrome";
 import { projects, skills, services, number } from "./data";
-import { clamp, damp, Magnetic, useFrame } from "./motion";
+import { clamp, damp, useFrame } from "./motion-runtime";
 export function Hero() {
   return (
     <section className="study-hero" aria-labelledby="study-hero-title">
       <div className="study-hero-meta study-meta">
-        <span>(Portfolio / ©2026)</span>
-        <span className="study-hero-role">Creative developer</span>
-        <span>Manchester, UK</span>
+        <span>{SITE_COPY.portfolioLabel}</span>
+        <span className="study-hero-role">{PERSON.role}</span>
+        <span>{PERSON.shortLocation}</span>
       </div>
       <h1 className="study-hero-name" id="study-hero-title">
         <span className="study-hero-line">
-          <KineticText text="MIKE" fit />
+          <KineticText text={PERSON.firstName} fit />
         </span>
         <span className="study-hero-line study-hero-line-last">
-          <KineticText text="WILCOCK" fit />
+          <KineticText text={PERSON.lastName} fit />
         </span>
       </h1>
       <div className="study-hero-bottom">
-        <p className="study-hero-description">
-          I design and build websites and apps with a lot of movement in them.
-          Startups, small businesses and fellow studios, mostly.
-        </p>
-        <span className="study-hero-scroll study-meta">↓ Scroll, gently</span>
+        <p className="study-hero-description">{PERSON.bio}</p>
+        <span className="study-hero-scroll study-meta">
+          {SITE_COPY.scrollHint}
+        </span>
         <Magnetic className="study-hero-action">
           <StudyLink to="/work" label="Work" className="study-pill">
-            See the work →
+            {SITE_COPY.workAction}
           </StudyLink>
         </Magnetic>
       </div>
@@ -210,12 +211,20 @@ export function SelectedWork() {
       aria-labelledby="study-work-heading"
     >
       <div className="study-section-head study-meta" data-study-reveal>
-        <h2 id="study-work-heading">Selected work (04)</h2>
+        <h2 id="study-work-heading">
+          {SITE_COPY.workHeading} ({number(projects.length - 1)})
+        </h2>
         <div>
           <button aria-pressed={paused} onClick={() => setPaused(!paused)}>
             {paused ? "(Play motion)" : "(Pause motion)"}
           </button>
-          <span className="study-work-years">2024 — 2026</span>
+          <span className="study-work-years">
+            {projects.map((p) => p.year).sort()[0]} —{" "}
+            {projects
+              .map((p) => p.year)
+              .sort()
+              .at(-1)}
+          </span>
         </div>
       </div>
       <div className="study-work-grid">
@@ -300,23 +309,11 @@ export function SelectedWork() {
                 >
                   {[0, 1, 2].map((n) => (
                     <div key={n}>
-                      {projects[active].media === "play" && n === 0 ? (
-                        <div className="study-dock-triptych">
-                          {[0, 1, 2].map((panel) => (
-                            <ProjectMedia
-                              key={panel}
-                              project={projects[active]}
-                              phone
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <ProjectMedia
-                          project={projects[active]}
-                          phone={n === 1}
-                          detail={n === 2}
-                        />
-                      )}
+                      <ProjectMedia
+                        project={projects[active]}
+                        phone={n === 1}
+                        detail={n === 2}
+                      />
                     </div>
                   ))}
                 </div>
@@ -329,7 +326,7 @@ export function SelectedWork() {
             </StudyLink>
             <div className="study-work-caption study-meta">
               <span>
-                <b>{number(active)}</b> / 04
+                <b>{number(active)}</b> / {number(projects.length - 1)}
               </span>
               <span>{projects[active].platform}</span>
             </div>
@@ -461,33 +458,40 @@ export function Gallery() {
       >
         <div className="study-gallery-track" ref={track}>
           {projects.flatMap((p, i) =>
-            [false, true].map((detail) => (
-              <StudyLink
-                to={`/work/${p.slug}`}
-                label={p.name}
-                cursor="Look"
-                key={`${p.slug}-${detail}`}
-                className="study-gallery-item"
-              >
-                <div className="study-gallery-frame">
-                  <ProjectMedia project={p} detail={detail} phone={!detail} />
-                </div>
-                <div className="study-gallery-caption study-meta">
-                  <span>
-                    ({number(i)}) {p.name}
-                  </span>
-                  <span>{detail ? "Detail" : "Mobile"}</span>
-                </div>
-              </StudyLink>
-            )),
+            (p.media.kind === "diagram" ? [false] : [false, true]).map(
+              (detail) => (
+                <StudyLink
+                  to={`/work/${p.slug}`}
+                  label={p.name}
+                  cursor="Look"
+                  key={`${p.slug}-${detail}`}
+                  className="study-gallery-item"
+                >
+                  <div className="study-gallery-frame">
+                    <ProjectMedia project={p} detail={detail} phone={!detail} />
+                  </div>
+                  <div className="study-gallery-caption study-meta">
+                    <span>
+                      ({number(i)}) {p.name}
+                    </span>
+                    <span>
+                      {p.media.kind === "diagram"
+                        ? "Architecture"
+                        : detail
+                          ? "Desktop"
+                          : "Mobile"}
+                    </span>
+                  </div>
+                </StudyLink>
+              ),
+            ),
           )}
         </div>
       </div>
     </section>
   );
 }
-const statement =
-  "I'm Mike. I design and build websites and apps that move, respond and feel good to use. Designed in Figma, built in code, made in Manchester.";
+const statement = PERSON.statement;
 export function Statement() {
   const ref = useRef<HTMLElement>(null),
     words = useRef<HTMLParagraphElement>(null),
@@ -523,7 +527,7 @@ export function Statement() {
           {statement.split(" ").map((word, i) => (
             <span
               aria-hidden="true"
-              className={`study-statement-word ${["move,", "respond"].includes(word) ? "is-emphasis" : ""} ${word === "Manchester." ? "study-accent" : ""}`}
+              className={`study-statement-word ${PERSON.statementEmphasis.includes(word) ? "is-emphasis" : ""} ${word === `${PERSON.city}.` ? "study-accent" : ""}`}
               key={`${word}-${i}`}
             >
               {word}
@@ -534,20 +538,20 @@ export function Statement() {
     </section>
   );
 }
-export function Services() {
+export function FocusAreas() {
   return (
-    <section className="study-services" id="services">
+    <section className="study-services" id="focus">
       <div className="study-section-head study-meta" data-study-reveal>
-        <h2>What I do</h2>
-        <StudyLink to="/services" label="Services">
-          All services →
+        <h2>{SITE_COPY.focusHeading}</h2>
+        <StudyLink to="/experience" label="Experience">
+          {SITE_COPY.focusAction}
         </StudyLink>
       </div>
       <div className="study-services-grid">
         {services.map((s, i) => (
           <StudyLink
             key={s.name}
-            to={`/services/${s.name.toLowerCase()}`}
+            to={s.to}
             label={s.name}
             className="study-service"
             cursor="View"

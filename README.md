@@ -97,9 +97,9 @@ Checks: `npx eslint src`, `npx tsc -b`, and `npm run build`. Full `npm run lint`
 
 ## Phase 1 reference recreation (2026-11-22)
 
-The default entry now runs the independent recreation in `src/recreation/`.
+The Phase 1 recreation is preserved at commit `b88c55a` on branch `phase-1-snapshot`. The current entry is the personalized Phase 2 portfolio in `src/recreation/`.
 Existing personal portfolio components, data, and media remain in the repository;
-Phase 2 personalization has not begun. See `PRODUCT.md` and `DESIGN.md` for scope
+Phase 2 retains the accepted visual and motion system. See `PRODUCT.md` and `DESIGN.md` for scope
 and measured design values, and `public/study/ASSET-LICENSES.txt` for provenance.
 
 Use Node 22.14+ (Vite 7 requires Node 20.19+ or 22.12+):
@@ -117,5 +117,16 @@ Browser QA uses an installed Google Chrome via Playwright (`channel: 'chrome'`);
 it does not install or access the user's browser profile. Run the dev server before
 browser tests or captures. The comparison gallery is at `/qa/index.html` during
 local development. Raw measurements and both visual rounds live in `qa/`.
-The contact form is a local interaction demo and sends nothing. All project media
-are original replacement interfaces, rather than copied reference client assets.
+The Phase 2 contact form prepares a real email draft for review; it has no backend. Project images are actual public-site captures, with explicitly labelled source architecture diagrams where there is no hosted demo.
+
+
+## Phase 2 — personal content, design locked
+
+Branch: `phase-2-personalization`. Restore the accepted original with `git switch phase-1-snapshot` after saving any new work; no force reset is required.
+
+- Personal identity, project facts, navigation, skills, and copy: `src/data/portfolio.ts`.
+- Confirmed contact links: `src/data/socials.ts`; internship facts: `src/data/experience.ts`.
+- Real project media: `public/projects/`; source/capture notes: `qa/phase-2/`.
+- Run `npm run qa:capture` for current personal-portfolio screenshots.
+- The color tokens, typography family, texture and motion parameters remain those accepted in Phase 1. Only real-content fitting and content pages are extended.
+- Contact opens an email draft addressed to the confirmed email, never claims to send from a non-existent backend.

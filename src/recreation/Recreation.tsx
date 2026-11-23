@@ -1,6 +1,8 @@
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { MotionProvider, useEngine } from "./motion";
+import { PERSON } from "../data/portfolio";
+import { MotionProvider } from "./motion";
+import { useEngine } from "./motion-runtime";
 import {
   Navigation,
   Footer,
@@ -14,8 +16,7 @@ import {
   WorkPage,
   CasePage,
   AboutPage,
-  ServicesPage,
-  ServicePage,
+  ExperiencePage,
   ContactPage,
   NotFound,
 } from "./Pages";
@@ -24,7 +25,7 @@ function Shell() {
   const location = useLocation(),
     engine = useEngine();
   useEffect(() => {
-    document.title = `${location.pathname === "/" ? "Reference study" : location.pathname.split("/").at(-1)} — Phase 1`;
+    document.title = PERSON.title;
     engine.refresh();
   }, [location.pathname, engine]);
   return (
@@ -46,8 +47,7 @@ function Shell() {
           <Route path="/work" element={<WorkPage />} />
           <Route path="/work/:slug" element={<CasePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

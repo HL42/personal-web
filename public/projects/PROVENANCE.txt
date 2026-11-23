@@ -1,0 +1,11 @@
+Project media — Fuquan Lin portfolio
+Captured from supplied public project URLs on 2026-11-22 using isolated Chrome.
+No login, private records, write actions or generated AI imagery were used.
+
+ciravo-desktop.jpg / ciravo-mobile.jpg: https://ciravo.app/ (public pre-launch site).
+savewise-desktop.jpg / savewise-mobile.jpg: https://save-wise-theta.vercel.app/ (actual app, read-only fictional demonstration; not personal financial records).
+nexus-desktop.jpg / nexus-mobile.jpg: https://inventory-system-liart-iota.vercel.app/ (live empty inventory at capture).
+nexus-repository.png: HL42/inventory-system screenshot.png at 9c485d787166b0ca40848b38c5008fd69f1ad633 (repository's own populated screenshot).
+blogapp-desktop.jpg / blogapp-mobile.jpg: https://blog-app-92jy.vercel.app/ (live interface; external news feed empty at capture).
+
+RepoWiki and Enterprise Multi-Source RAG Agent: explicitly labelled architecture diagrams in the portfolio, derived from their README and inspected source. These are not product screenshots, conversations, or benchmark results.
