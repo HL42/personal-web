@@ -1,11 +1,15 @@
 Project media — Fuquan Lin portfolio
-Captured from supplied public project URLs on 2026-11-22 using isolated Chrome.
-No login, private records, write actions or generated AI imagery were used.
+Current displayed captures: November 24, 2026, America/Toronto.
+Every displayed image was captured directly from an actual browser page using Playwright screenshot(), without DOM replacements, AI imagery, generated app mockups or invented records. Existing portfolio browser/device frames are presentation only; the linked original capture is unframed.
 
-ciravo-desktop.jpg / ciravo-mobile.jpg: https://ciravo.app/ (public pre-launch site).
-savewise-desktop.jpg / savewise-mobile.jpg: https://save-wise-theta.vercel.app/ (actual app, read-only fictional demonstration; not personal financial records).
-nexus-desktop.jpg / nexus-mobile.jpg: https://inventory-system-liart-iota.vercel.app/ (live empty inventory at capture).
-nexus-repository.png: HL42/inventory-system screenshot.png at 9c485d787166b0ca40848b38c5008fd69f1ad633 (repository's own populated screenshot).
-blogapp-desktop.jpg / blogapp-mobile.jpg: https://blog-app-92jy.vercel.app/ (live interface; external news feed empty at capture).
+ciravo-desktop.jpg / ciravo-detail.jpg / ciravo-mobile.jpg
+Source: https://ciravo.app/ (actual public pre-launch website). The public site itself includes promotional phone artwork; this is not a capture of a signed-in native application.
 
-RepoWiki and Enterprise Multi-Source RAG Agent: explicitly labelled architecture diagrams in the portfolio, derived from their README and inspected source. These are not product screenshots, conversations, or benchmark results.
+savewise-desktop.jpg / savewise-detail.jpg / savewise-mobile.jpg
+Source: https://save-wise-theta.vercel.app/, via the actual EN control and Explore the demo button. Read-only fictional demo data is supplied by SaveWise itself. No personal financial records or account login was used.
+
+repowiki-desktop.jpg / repowiki-detail.jpg
+Source: unmodified HL42/Repowiki source, commit f96a5ee60f328f6d64e3cce8c64f82780ddc595b, built with its Vue frontend and Go backend and run on loopback in a temporary directory. Actual setup screen and empty Q&A panel. Empty knowledge base; no API key configured, no data import, AI call, or invented chat. The application is desktop-oriented: desktop captures are reused in narrow portfolio layouts, not represented as a native phone app.
+
+Capture timestamps, original URLs, HTTP status, viewport sizes and SHA-256 hashes: qa/project-captures/manifest.json.
+Older Nexus/BlogApp media in this directory are historical and not displayed by the current three-project portfolio. Source-derived architecture graphics are no longer displayed in current project previews.

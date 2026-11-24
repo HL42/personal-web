@@ -117,6 +117,7 @@ type ScreenshotMedia = {
   desktop: string;
   mobile: string;
   detail?: string;
+  desktopOnly?: boolean;
   alt: string;
   caption: string;
 };
@@ -172,8 +173,9 @@ export const PROJECTS: PortfolioProject[] = [
       kind: "screenshot",
       desktop: "/projects/ciravo-desktop.jpg",
       mobile: "/projects/ciravo-mobile.jpg",
+      detail: "/projects/ciravo-detail.jpg",
       alt: "Ciravo public launch page captured from ciravo.app",
-      caption: "Public launch site · captured November 2026",
+      caption: "Actual public launch site · captured November 24, 2026",
     },
     source: {
       url: "https://ciravo.app/",
@@ -212,25 +214,14 @@ export const PROJECTS: PortfolioProject[] = [
       "Runs locally with an external model API. macOS and Windows release packages are documented; no hosted demo is advertised.",
     github: "https://github.com/HL42/Repowiki",
     media: {
-      kind: "diagram",
-      eyebrow: "Source-verified architecture",
-      steps: [
-        {
-          title: "Source code & docs",
-          detail: "Scan · classify by layer and domain",
-        },
-        {
-          title: "Generated knowledge",
-          detail: "Markdown + YAML · incremental updates",
-        },
-        { title: "Retrieve", detail: "Inverted index · refined queries" },
-        {
-          title: "Answer with sources",
-          detail: "DeepSeek · multi-turn context",
-        },
-      ],
+      kind: "screenshot",
+      desktop: "/projects/repowiki-desktop.jpg",
+      mobile: "/projects/repowiki-desktop.jpg",
+      detail: "/projects/repowiki-detail.jpg",
+      desktopOnly: true,
+      alt: "RepoWiki actually running locally: setup screen with an empty knowledge base and no API key configured",
       caption:
-        "Architecture derived from repository source, not a product screenshot",
+        "Actual local desktop application · setup and empty Q&A panel · no API key configured · captured November 24, 2026",
     },
     source: {
       url: "https://github.com/HL42/Repowiki",
@@ -277,8 +268,9 @@ export const PROJECTS: PortfolioProject[] = [
       kind: "screenshot",
       desktop: "/projects/savewise-desktop.jpg",
       mobile: "/projects/savewise-mobile.jpg",
+      detail: "/projects/savewise-detail.jpg",
       alt: "SaveWise actual application in its read-only fictional demo mode",
-      caption: "Actual app · read-only fictional demo data",
+      caption: "Actual app · built-in read-only fictional demo · captured November 24, 2026",
     },
     source: {
       url: "https://github.com/HL42/SaveWise",

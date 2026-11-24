@@ -204,7 +204,7 @@ test("gallery drags with inertia, prevents accidental navigation, and normal cli
       .locator(".study-gallery-track")
       .evaluate((el) => getComputedStyle(el).transform),
   ).not.toBe(start);
-  await page.locator(".study-gallery-item").nth(3).click();
+  await page.locator('.study-gallery-item[href="#/work/savewise"]').first().click();
   await expect(page).toHaveURL(/#\/work\/savewise$/);
 });
 test("native horizontal scrolling on touch", async ({ browser }) => {
@@ -388,9 +388,9 @@ test("three verified projects, authentic media and contact links", async ({
     "SaveWise",
   ]);
   await expect(page.locator(".study-gallery .portfolio-diagram")).toHaveCount(
-    1,
+    0,
   );
-  await expect(page.locator(".study-gallery-item")).toHaveCount(5);
+  await expect(page.locator(".study-gallery-item")).toHaveCount(6);
   await expect(
     page.locator('.study-footer a[href="https://github.com/HL42"]'),
   ).toBeVisible();
@@ -434,31 +434,26 @@ test("all personal routes are free of reference identity and mobile overflow", a
   }
 });
 
-test("verified architecture diagrams fit their case frames at all viewports", async ({
-  page,
-}) => {
+test("all projects use actual captures and RepoWiki stays a desktop app", async ({ page, request }) => {
   await skipIntro(page);
-  for (const [width, height] of [
-    [1440, 900],
-    [1280, 800],
-    [390, 844],
-  ]) {
+  for (const [width, height] of [[1440, 900], [1280, 800], [390, 844]]) {
     await page.setViewportSize({ width, height });
-    for (const slug of ["repowiki"]) {
+    for (const slug of ["ciravo", "repowiki", "savewise"]) {
       await page.goto("/#/work/" + slug);
-      await page.evaluate(() => document.fonts.ready);
-      await page.waitForTimeout(150);
-      const bounds = await page
-        .locator(".study-case-cover .portfolio-diagram-inner")
-        .evaluate((el) => ({
-          inner: el.clientHeight,
-          content: el.scrollHeight,
-          bottom: el.getBoundingClientRect().bottom,
-          last: el.querySelector("li:last-child").getBoundingClientRect()
-            .bottom,
-        }));
-      expect(bounds.content).toBeLessThanOrEqual(bounds.inner + 1);
-      expect(bounds.last).toBeLessThanOrEqual(bounds.bottom + 1);
+      await expect(page.locator(".study-case-cover img")).toHaveAttribute("src", `/projects/${slug}-desktop.jpg`);
+      await expect(page.locator(".portfolio-media-caption")).toContainText("captured November 24, 2026");
+      await expect(page.locator(".portfolio-diagram")).toHaveCount(0);
+      if (slug === "repowiki") {
+        await expect(page.locator(".study-case .study-phone")).toHaveCount(0);
+        await expect(page.locator(".portfolio-media-caption")).toContainText("no API key configured");
+      }
+    }
+  }
+  for (const slug of ["ciravo", "repowiki", "savewise"]) {
+    for (const view of slug === "repowiki" ? ["desktop", "detail"] : ["desktop", "detail", "mobile"]) {
+      const response = await request.get(`/projects/${slug}-${view}.jpg`);
+      expect(response.status()).toBe(200);
+      expect((await response.body()).subarray(0, 2).toString("hex")).toBe("ffd8");
     }
   }
 });

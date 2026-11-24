@@ -1,0 +1,115 @@
+[
+  {
+    "slug": "ciravo",
+    "url": "https://ciravo.app/",
+    "state": "Public pre-launch website",
+    "capturedAt": "2026-11-24T19:26:39.561Z",
+    "title": "Ciravo — Find your people",
+    "resolvedUrl": "https://ciravo.app/",
+    "text": "Skip to content\nCiravo\n\nFind events.\nMeet your people.\nGo together.\n\nFind your night.\nMeet your people.\nMeet your people.\n\nThe plans worth making. The people worth meeting. Discover your city after dark, with Ciravo.\n\nJoin waitlist\n↗\nYour plans.\nYour kind of people.\n\nFrom the first “who’s going?” to the night you’ll talk about tomorrow. Find nearby events, save your favourites, and see who shares your vibe.\n\nDiscover events and places around you\nKeep your next night out in one place\nMeet people through shared plans\nGo somewhere.\nFind your people.\n\nA great night starts with a small connection. Explore what’s nearby, find your community, and turn a shared interest into a real plan.\n\nExplore your city, one event at a time\nBuild your Circle around what you love\nMake the move from online to out there\nSee what we’re building\n↗\nA whole night.\nOne little app.\n\nComing soon. Join the waitlist for launch updates.\n\nComing to the\nApp Store\nComing to\nGoogle Play\nMake room for\nsomething real.\nJoin waitlist\n↗\nBe part of what’s next.\n\nJoin the Ciravo email waitlist for launch news and product updates.\n\nEmail address\n\nI agree to receive Ciravo launch news and product updates by email. I can unsubscribe at any time.\n\nRead our Privacy Policy and Terms. Email consent is separate from accepting account terms.\n\nJoin waitlist\n↗\n\nWaitlist under development.\n\nCiravo\nProgress\nAbout us\nPrivacy\nTerms\nAdmin\n© 2026 Ciravo",
+    "status": 200,
+    "captures": [
+      {
+        "path": "public/projects/ciravo-desktop.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "083a25a7139d7e0785bd07e979dd02ba664ab6809312faf1f0b3cc640025ceaa"
+      },
+      {
+        "path": "public/projects/ciravo-detail.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "ee10ba81ba243e68dbf080ce4cc59e14c061074e82cb5ee00499620fc42f389a"
+      },
+      {
+        "path": "public/projects/ciravo-mobile.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "44ec8bf1f336536e0939bdd3a856a7e89e106db62dc834e5dcfcf276200342d1"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "savewise",
+    "url": "https://save-wise-theta.vercel.app/",
+    "state": "Actual read-only demo; fictional data supplied by the application",
+    "capturedAt": "2026-11-24T19:26:45.154Z",
+    "title": "SaveWise · Know your money",
+    "resolvedUrl": "https://save-wise-theta.vercel.app/",
+    "text": "SaveWise\nOverview · 2026-11-24\n中\nFictional data · No database connection\nUpdated 11-24, 02:26 p.m.\nRefresh\nThis demo uses fictional data. Sign in to use your own ledger.\nSpend with a clearer picture\nNext 30 days · Includes overdue bills\nAvailable to spend\nCAD\n$900.00\nBank balances\n$2,400.00\nSet aside\n$1,200.00\nUpcoming bills\n$300.00\nHow is this calculated?\nComing due\nBy due date · 1 unpaid\nView all\n示例信用卡\nDue in 3 days · 2026-11-27\nRemaining due $300.00\nOverview\nDue\nAdd entry\nAccounts\nActivity\nCAD and CNY are separate · Based on confirmed data",
+    "status": 200,
+    "captures": [
+      {
+        "path": "public/projects/savewise-desktop.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "c36766bc5a8ddef4c13064a16aa372f89c9a503793b49b0993270f10667bfdce"
+      },
+      {
+        "path": "public/projects/savewise-detail.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "c36766bc5a8ddef4c13064a16aa372f89c9a503793b49b0993270f10667bfdce"
+      },
+      {
+        "path": "public/projects/savewise-mobile.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "f91361cfffef3ac020639b848bc72301efcf69478c9c07747d8753b5c462c7df"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "slug": "repowiki",
+    "url": "http://127.0.0.1:55180",
+    "state": "Unmodified local application; empty knowledge base; no API key or AI requests",
+    "capturedAt": "2026-11-24T19:40:39.874Z",
+    "title": "RepoWiki - 本地代码知识库",
+    "resolvedUrl": "http://127.0.0.1:55180/",
+    "text": "RepoWiki\n本地知识库\n🚀\n快速开始\n🏠\n知识库总览\n📚\n浏览 Wiki\n🔬\n综合提炼\n📊\n知识库统计\n📥\n导入文档\n🔍\n质量检查\n💬\nAI 问答\n已打开\n0\n个页面已索引\n0 源文档 · 0 实体 · 0 概念\n质量良好\n11-24 14:26\n快速开始\n\n三步把 RepoWiki 用起来：配置密钥 → 导入文档 → 提问。\n\n📭\n知识库还是空的\n按下面三步导入第一批文档后即可提问。\n1\n填写 DeepSeek API Key\n必做\n\n到 platform.deepseek.com 创建一个 API Key（sk- 开头），粘贴到下面即可。密钥只保存在本机，不会上传。\n\n保存\n密钥保存在本机 .env（或系统用户数据目录），只有本程序能读到。\n保存时会即时校验有效性，填错的密钥会直接提示。\n如果你更习惯命令行：也可以手动编辑 .env 后重启。\n2\n导入你的文档或代码\n\n切到「导入文档」，先选目标项目与子项目，再在「文档目录路径」旁点 浏览文件夹…，从弹出的目录树里选中要导入的目录。\n\n支持 .md / .go / .py / .js / .ts / .vue / .java / .rs 等文件，按目录递归扫描。\n包内自带示例项目 examples/order-service，可以直接用它练手，不用担心污染自己的仓库。\n导入会调用 DeepSeek 解析文档，消耗少量额度；内容未变的文件会按哈希跳过，重复导入不重复计费。\n去导入文档 →\n3\n开始提问\n\n点左下角的 AI 问答（或右下角悬浮按钮）打开问答面板，直接用自然语言提问，回答会带上出处链接。\n\n试试：「订单的状态流转规则是什么？」「支付回调如何保证幂等？」\n提问时可以指定项目 / 子项目，把检索范围缩小到某个模块。\n想要一份跨文档的综述，用「综合提炼」按主题生成。\n打开 AI 问答 →\nAI 问答\n✕\n全部项目\n\n搜索知识库\n\n在下方输入问题，AI 将从 Wiki 中检索回答\n\n↑",
+    "status": 200,
+    "captures": [
+      {
+        "path": "public/projects/repowiki-desktop.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "c6852680d09378ea708757ed0c6a1739fc5e31dd7ecfd94a5dd06b753ae7695f"
+      },
+      {
+        "path": "public/projects/repowiki-detail.jpg",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "sha256": "b45e425ac98fdc9a27c0dc76f595d0f986005b5879366c4a9ecb4da5f2d26b90"
+      },
+      {
+        "path": "qa/project-captures/repowiki-narrow-unsupported.jpg",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "sha256": "3b3dbf5def7059d65ad6909359e45990f0619c775a7895ba7ca60df15516d436"
+      }
+    ],
+    "errors": [],
+    "revision": "f96a5ee60f328f6d64e3cce8c64f82780ddc595b",
+    "mobileNote": "Desktop application. Narrow viewport is not used in the portfolio; actual desktop captures are used instead."
+  }
+]

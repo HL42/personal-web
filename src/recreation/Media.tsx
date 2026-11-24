@@ -38,7 +38,8 @@ export function ProjectMedia({
         </div>
       </div>
     );
-  const src = phone
+  const usePhone = phone && !media.desktopOnly;
+  const src = usePhone
     ? media.mobile
     : detail
       ? (media.detail ?? media.desktop)
@@ -48,7 +49,7 @@ export function ProjectMedia({
       className={`study-project-media portfolio-project-capture ${detail ? "is-detail" : ""}`}
       style={{ background: project.tone }}
     >
-      {phone ? (
+      {usePhone ? (
         <div className="study-phone">
           <div className="study-phone-island" />
           <img
@@ -71,7 +72,7 @@ export function ProjectMedia({
             src={src}
             alt={
               detail && media.detail
-                ? `${project.name} screenshot from the project repository`
+                ? `Actual ${project.name} interface captured in the browser, detail view`
                 : media.alt
             }
             draggable={false}

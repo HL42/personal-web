@@ -126,6 +126,9 @@ export function CasePage() {
       </div>
       <p className="portfolio-media-caption study-meta">
         {project.media.caption}
+        {project.media.kind === "screenshot" && (
+          <> · <a href={project.media.desktop} target="_blank" rel="noreferrer">View original capture →</a></>
+        )}
       </p>
       <div className="study-case-description">
         <h2 className="study-meta">(Overview)</h2>

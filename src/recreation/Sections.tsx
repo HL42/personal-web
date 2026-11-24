@@ -477,9 +477,9 @@ export function Gallery() {
                     <span>
                       {p.media.kind === "diagram"
                         ? "Architecture"
-                        : detail
-                          ? "Desktop"
-                          : "Mobile"}
+                        : p.media.desktopOnly
+                          ? detail ? "Desktop · Q&A panel" : "Desktop · setup"
+                          : detail ? "Desktop" : "Mobile"}
                     </span>
                   </div>
                 </StudyLink>
